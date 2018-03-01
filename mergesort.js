@@ -1,13 +1,8 @@
 function mergeSort( arr ) {
-  let initArray = [ arr ]
-  for ( i=0 ; i < arr.length ; i++ ) {
-      if ( initArray[i].length > 1 ) {
-        let spl = split(initArray[i])
-        initArray.splice( i, 1, spl[0], spl[1] )
-      }
-      console.log(initArray)
+  let splitArr = []
+  arr.forEach( elem => splitArr.push([elem]))
+
   }
-  return initArray
   // if ( arr.length === 1 || arr.length === 0 ) {
   //   return arr
   // } else if ( arr.length === 2 ) {
@@ -31,5 +26,28 @@ function swap(arr, index ) {
 function split( arr ) {
   let half = Math.floor(arr.length / 2)
   return [ arr.slice(0, half), arr.slice(half) ]
+}
+
+function merge ( arr1, arr2 ) {
+  let result = []
+      pointer1 = arr1.length - 1
+      pointer2 = arr2.length - 1
+
+  while ( pointer1 && pointer2 ) {
+    if( arr1[pointer1] > arr2[pointer2] ) {
+      result.unshift( arr1[pointer1] )
+      pointer1--
+    } else {
+      result.unshift( arr2[pointer2] )
+      pointer2--
+    }
+  }
+  if ( pointer1 ) {
+    result = arr1.concat( result )
+  } else {
+    result = arr2.concat( result )
+  }
+  return result
+
 }
 
